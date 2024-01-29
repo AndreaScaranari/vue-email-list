@@ -28,10 +28,14 @@
     <div id="root">
         <main>
             <div class="container">
-                <h1 class="text-center py-3">10 Indirizzi Mail</h1>
-                <ul>
+                <h1 class="text-center py-3">Generatore di<br>Indirizzi Mail Casuali</h1>
+                <div class="input-group">
+                    <input type="number" class="me-2 ps-2" placeholder="Numero di email da generare" v-model="mAddressQtity">
+                    <button role="button" class="px-2" @click="getRandomEmail()">Genera!</button>
+                </div>
+                <ol>
                     <li v-for="mail in mailList" :key="mail">{{mail}}</li>
-                </ul>
+                </ol>
             </div>
         </main>
     </div>
