@@ -6,22 +6,17 @@ const app = Vue.createApp({
         mailList: [],
         }
     ),
-    method: {
-        // getRandomEmail(amount) {
-        //     for (let i = 0; i < amount; i++) {
-        //     axios.get(endpoint)
-        //         .then(res => {
-        //         this.mailList.push(res.data.response);
-        //     })}
-        // } 
-    },
-    created() {
-        // this.getRandomEmail(10)
-        for (let i = 0; i < 10; i++) {
+    methods: {
+        getRandomEmail(amount) {
+            for (let i = 0; i < amount; i++) {
             axios.get(endpoint)
                 .then(res => {
                 this.mailList.push(res.data.response);
             })}
+        } 
+    },
+    created() {
+        this.getRandomEmail(10)
     }
 });
 
