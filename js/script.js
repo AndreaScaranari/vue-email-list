@@ -4,7 +4,8 @@ const endpoint = 'https://flynn.boolean.careers/exercises/api/random/mail'
 const app = Vue.createApp({
     data: () => ({
         mailList: [],
-        mAddressQtity: null
+        mAddressQtity: null,
+        mAddressQFlag: 0
         }
     ),
     methods: {
@@ -19,11 +20,21 @@ const app = Vue.createApp({
         
         // # metodo legato a click button
         getRandomEmail() {
-            for (let i = 0; i < this.mAddressQtity; i++) {
+            this.mailList = [];
+            this.mAddressQFlag = this.mAddressQtity;
+            this.mAddressQtity = "";
+
+            if (isNaN(this.mAddressQFlag) || this.mAddressQFlag <= 0) {
+                this.mAddressQFlag = 0 
+                return
+            }
+
+            for (let i = 0; i < this.mAddressQFlag; i++) {
             axios.get(endpoint)
                 .then(res => {
                 this.mailList.push(res.data.response);
             })}
+
         }
     },
     created() {
